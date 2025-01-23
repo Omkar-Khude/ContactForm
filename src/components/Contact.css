@@ -9,6 +9,13 @@
     font-weight: 700;
     letter-spacing: 1.4px;
   }
+
+  .app-form-control.textarea {
+    height: 15px; 
+    resize: none;
+    overflow: hidden;
+    max-height: 15px;
+  }
   
   .background {
     display: flex;
@@ -285,8 +292,4 @@
   .SubmittedData strong {
     color: #ea1d6f;
   }
-  
-
-
-
   

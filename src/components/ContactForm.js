@@ -114,7 +114,7 @@ const ContactForm = () => {
                   <div className="app-form-group">
                     <input
                       className="app-form-control"
-                      placeholder="NAME"
+                      placeholder=" NAME"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -123,8 +123,8 @@ const ContactForm = () => {
                   </div>
                   <div className="app-form-group">
                     <textarea
-                      className="app-form-control"
-                      placeholder="ADDRESS"
+                      className="app-form-control textarea"
+                      placeholder=" ADDRESS"
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
@@ -134,7 +134,7 @@ const ContactForm = () => {
                   <div className="app-form-group">
                     <input
                       className="app-form-control"
-                      placeholder="PHONE NUMBER"
+                      placeholder=" PHONE NUMBER"
                       name="phoneNumber"
                       value={formData.phoneNumber}
                       onChange={handleChange}
