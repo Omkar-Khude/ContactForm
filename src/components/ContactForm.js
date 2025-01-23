@@ -28,8 +28,7 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    
+
     if (name === 'country') {
       axios.get(`https://countriesnow.space/api/v0.1/countries/states/q?country=${value}`)
         .then(response => {
@@ -39,13 +38,21 @@ const ContactForm = () => {
           console.error('Error fetching states:', error);
         });
     }
+
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       setSubmitted(true);
-      setSubmittedData(formData);
+      setSubmittedData({
+        name: formData.name,
+        address: formData.address,
+        phoneNumber: formData.phoneNumber,
+        country: formData.country,
+        state: formData.state,
+      });
     }
   };
 
@@ -159,7 +166,7 @@ const ContactForm = () => {
                     >
                       <option value="">Select State</option>
                       {states.map((state) => (
-                        <option key={state.state_code} value={state.state_code}>
+                        <option key={state.state_code} value={state.name}>
                           {state.name}
                         </option>
                       ))}
@@ -177,16 +184,16 @@ const ContactForm = () => {
         {submitted && (
           <div className="SubmittedData">
             <div className="SubmittedData-one">
-                <span>SUBMITTED</span>
-                <span>DATA</span>
-              </div>
+              <span>SUBMITTED</span>
+              <span>DATA</span>
+            </div>
             <div>
-            <p><strong>Name:</strong> {submittedData.name}</p>
-            <p><strong>Address:</strong> {submittedData.address}</p>
-            <p><strong>Phone Number:</strong> {submittedData.phoneNumber}</p>
-            <p><strong>Country:</strong> {submittedData.country}</p>
-            <p><strong>State:</strong> {submittedData.state}</p>
-          </div>
+              <p><strong>Name:</strong> {submittedData.name}</p>
+              <p><strong>Address:</strong> {submittedData.address}</p>
+              <p><strong>Phone Number:</strong> {submittedData.phoneNumber}</p>
+              <p><strong>Country:</strong> {submittedData.country}</p>
+              <p><strong>State:</strong> {submittedData.state}</p>
+            </div>
           </div>
         )}
       </div>
